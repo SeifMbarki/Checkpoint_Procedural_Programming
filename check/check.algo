@@ -1,0 +1,66 @@
+PROCEDURE dot_product (v1,v2: ARRAY_OF INTEGER;var PS:INTEGER)
+VAR
+    dot:INTEGER;
+BEGIN
+IF (v1.length<>v2.length) THEN
+  write("v1 ET v2 sont incompatibles");
+ELSE
+    
+    FOR i FROM 0 TO v2.length -1 STEP 1  DO
+        PS:=PS+v1[i]*v2[i];
+    END_FOR
+END_IF
+
+END
+FUNCTION dot_product (v1,v2: ARRAY_OF FLOAT) : INTEGER
+VAR
+  PS: INTEGER;
+BEGIN
+   FOR i FROM 0 TO v2.length -1 STEP 1  DO
+        PS:=PS+v1[i]*v2[i];
+    END_FOR
+  RETURN PS ;
+END
+ALGORITHM Dot product
+VAR
+ pair  :	STRUCT
+            x : ARRAY_OF INTEGER[2];;
+            y  : ARRAY_OF INTEGER[2];;
+          END_STRUCT
+  n: INTEGER;
+  Vectors : ARRAY_OF pair [50];
+BEGIN
+ n:=0;
+ REPEAT
+     write("donner le nombre de paires");
+    read (n);
+   UNTIL (n<50)
+   
+    
+  END_WHILE
+  FOR i FROM 0 TO n-1 STEP 1  DO
+   write("donner la",i,"eme paire");
+   read(Vectors[i].x[1]);
+   read(Vectors[i].x[2]);
+   read(Vectors[i].y[1]);
+   read(Vectors[i].y[1]);
+   
+  END_FOR
+  //now we will use the procedure in this part
+  FOR i FROM 0 TO n-1 STEP 1  DO
+    dot_product (Vectors[i].x,Vectors[i].y;var dot);
+    IF (dot=0) THEN
+       write(Vectors[i,0],"&",Vectors[i,1]," orthogonal");
+    END_IF
+  END_FOR
+   //now we wil use the function 
+  FOR i FROM 0 TO n-1 STEP 1  DO
+  IF (Vectors[i,0].length<>Vectors[i,1].length) THEN
+     write(Vectors[i,0],"&",Vectors[i,1],"incompatibles")
+  ELSE
+    dot:=dot_product (Vectors[i,0],Vectors[i,1])
+    IF (dot=0) THEN
+      write(Vectors[i,0],"&",Vectors[i,1]," orthogonal")
+    END_IF
+  END_IF
+  
